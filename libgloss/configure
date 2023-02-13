@@ -636,6 +636,8 @@ CONFIG_RISCV_FALSE
 CONFIG_RISCV_TRUE
 CONFIG_NIOS2_FALSE
 CONFIG_NIOS2_TRUE
+CONFIG_LOONGARCH_FALSE
+CONFIG_LOONGARCH_TRUE
 CONFIG_LM32_FALSE
 CONFIG_LM32_TRUE
 CONFIG_LIBNOSYS_FALSE
@@ -2879,6 +2881,9 @@ case "${target}" in
   lm32*-*-*)
 	config_lm32=true
 	;;
+  loongarch*-*-*)
+	config_loongarch=true
+	;;
   mcore-*-*)
 	ac_config_files="$ac_config_files mcore/Makefile"
 
@@ -3053,6 +3058,14 @@ fi
 else
   CONFIG_LM32_TRUE='#'
   CONFIG_LM32_FALSE=
+fi
+
+   if test x$config_loongarch = xtrue; then
+  CONFIG_LOONGARCH_TRUE=
+  CONFIG_LOONGARCH_FALSE='#'
+else
+  CONFIG_LOONGARCH_TRUE='#'
+  CONFIG_LOONGARCH_FALSE=
 fi
 
    if test x$config_nios2 = xtrue; then
@@ -4937,6 +4950,7 @@ case "${target}" in
   h8500-*-*) ;;
   i345686-*-sco*) ;;
   lm32-*-*) ;;
+  loongarch*-*-*) ;;
   m32r-*-*) ;;
   mn10?00-*-*) ;;
   riscv*-*-*) ;;
@@ -5333,6 +5347,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${CONFIG_LM32_TRUE}" && test -z "${CONFIG_LM32_FALSE}"; then
   as_fn_error $? "conditional \"CONFIG_LM32\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${CONFIG_LOONGARCH_TRUE}" && test -z "${CONFIG_LOONGARCH_FALSE}"; then
+  as_fn_error $? "conditional \"CONFIG_LOONGARCH\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${CONFIG_NIOS2_TRUE}" && test -z "${CONFIG_NIOS2_FALSE}"; then

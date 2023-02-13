@@ -176,20 +176,23 @@ check_PROGRAMS = $(am__EXEEXT_2) $(am__EXEEXT_3)
 @CONFIG_LM32_TRUE@am__append_29 = lm32/crt0.o lm32/sim.ld
 @CONFIG_LM32_TRUE@am__append_30 = lm32/libgloss.a
 @CONFIG_LM32_TRUE@am__append_31 = lm32/crt0.S
-@CONFIG_NIOS2_TRUE@am__append_32 = \
+@CONFIG_LOONGARCH_TRUE@am__append_32 = loongarch/crt0.o
+@CONFIG_LOONGARCH_TRUE@am__append_33 = loongarch/crt0.S
+@CONFIG_LOONGARCH_TRUE@am__append_34 = loongarch/libgloss.a
+@CONFIG_NIOS2_TRUE@am__append_35 = \
 @CONFIG_NIOS2_TRUE@	nios2/qemu-hosted.ld
 
-@CONFIG_NIOS2_TRUE@am__append_33 = nios2/libnios2.a
-@CONFIG_RISCV_TRUE@am__append_34 = \
+@CONFIG_NIOS2_TRUE@am__append_36 = nios2/libnios2.a
+@CONFIG_RISCV_TRUE@am__append_37 = \
 @CONFIG_RISCV_TRUE@	riscv/nano.specs \
 @CONFIG_RISCV_TRUE@	riscv/sim.specs \
 @CONFIG_RISCV_TRUE@	riscv/semihost.specs \
 @CONFIG_RISCV_TRUE@	riscv/crt0.o
 
-@CONFIG_RISCV_TRUE@am__append_35 = riscv/libgloss.a \
+@CONFIG_RISCV_TRUE@am__append_38 = riscv/libgloss.a \
 @CONFIG_RISCV_TRUE@	riscv/libsemihost.a
-@CONFIG_WINCE_TRUE@am__append_36 = $(gdbdir)
-@CONFIG_WINCE_TRUE@am__append_37 = wince/stub.exe
+@CONFIG_WINCE_TRUE@am__append_39 = $(gdbdir)
+@CONFIG_WINCE_TRUE@am__append_40 = wince/stub.exe
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/../config/depstand.m4 \
@@ -418,14 +421,39 @@ libobjs_a_LIBADD =
 @CONFIG_CSKY_TRUE@am__objects_4 = csky/crt0.$(OBJEXT)
 @CONFIG_IQ2000_TRUE@am__objects_5 = iq2000/crt0.$(OBJEXT)
 @CONFIG_LM32_TRUE@am__objects_6 = lm32/crt0.$(OBJEXT)
+@CONFIG_LOONGARCH_TRUE@am__objects_7 = loongarch/crt0.$(OBJEXT)
 am_libobjs_a_OBJECTS = $(am__objects_3) $(am__objects_4) \
-	$(am__objects_5) $(am__objects_6)
+	$(am__objects_5) $(am__objects_6) $(am__objects_7)
 libobjs_a_OBJECTS = $(am_libobjs_a_OBJECTS)
 lm32_libgloss_a_AR = $(AR) $(ARFLAGS)
 lm32_libgloss_a_LIBADD =
 @CONFIG_LM32_TRUE@am_lm32_libgloss_a_OBJECTS = lm32/isatty.$(OBJEXT) \
 @CONFIG_LM32_TRUE@	lm32/scall.$(OBJEXT)
 lm32_libgloss_a_OBJECTS = $(am_lm32_libgloss_a_OBJECTS)
+loongarch_libgloss_a_AR = $(AR) $(ARFLAGS)
+loongarch_libgloss_a_LIBADD =
+@CONFIG_LOONGARCH_TRUE@am_loongarch_libgloss_a_OBJECTS = loongarch/loongarch_libgloss_a-_exit.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-chown.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-close.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-conv_stat.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-fstat.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-getpid.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-gettod.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-isatty.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-kill.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-link.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-lseek.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-open.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-read.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-readlink.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-sbrk.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-stat.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-symlink.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-times.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-unlink.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-wait.$(OBJEXT) \
+@CONFIG_LOONGARCH_TRUE@	loongarch/loongarch_libgloss_a-write.$(OBJEXT)
+loongarch_libgloss_a_OBJECTS = $(am_loongarch_libgloss_a_OBJECTS)
 nios2_libnios2_a_AR = $(AR) $(ARFLAGS)
 nios2_libnios2_a_LIBADD =
 @CONFIG_NIOS2_TRUE@am_nios2_libnios2_a_OBJECTS =  \
@@ -573,9 +601,9 @@ SOURCES = $(aarch64_librdimon_a_SOURCES) $(arc_libnsim_a_SOURCES) \
 	$(csky_libsemi_a_SOURCES) $(d30v_libsim_a_SOURCES) \
 	$(iq2000_libeval_a_SOURCES) $(libnosys_libnosys_a_SOURCES) \
 	$(libobjs_a_SOURCES) $(lm32_libgloss_a_SOURCES) \
-	$(nios2_libnios2_a_SOURCES) $(riscv_libgloss_a_SOURCES) \
-	$(riscv_libsemihost_a_SOURCES) bfin/sim-test.c iq2000/test.c \
-	$(wince_stub_exe_SOURCES)
+	$(loongarch_libgloss_a_SOURCES) $(nios2_libnios2_a_SOURCES) \
+	$(riscv_libgloss_a_SOURCES) $(riscv_libsemihost_a_SOURCES) \
+	bfin/sim-test.c iq2000/test.c $(wince_stub_exe_SOURCES)
 AM_V_DVIPS = $(am__v_DVIPS_@AM_V@)
 am__v_DVIPS_ = $(am__v_DVIPS_@AM_DEFAULT_V@)
 am__v_DVIPS_0 = @echo "  DVIPS   " $@;
@@ -662,7 +690,7 @@ ETAGS = etags
 CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
-VPATH = @srcdir@ $(am__append_36)
+VPATH = @srcdir@ $(am__append_39)
 AARCH64_OBJTYPE = @AARCH64_OBJTYPE@
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
@@ -798,11 +826,12 @@ multilibtool_DATA = $(am__append_3) $(am__append_6) $(am__append_7) \
 	$(am__append_8) $(am__append_13) $(am__append_15) \
 	$(am__append_18) $(am__append_22) $(am__append_23) \
 	$(am__append_27) $(am__append_29) $(am__append_32) \
-	$(am__append_34)
+	$(am__append_35) $(am__append_37)
 multilibtool_LIBRARIES = $(am__append_2) $(am__append_5) \
 	$(am__append_9) $(am__append_11) $(am__append_20) \
 	$(am__append_21) $(am__append_24) $(am__append_28) \
-	$(am__append_30) $(am__append_33) $(am__append_35)
+	$(am__append_30) $(am__append_34) $(am__append_36) \
+	$(am__append_38)
 includetooldir = $(tooldir)/include
 includetool_DATA = $(am__append_16)
 includesystooldir = $(tooldir)/include/sys
@@ -813,7 +842,7 @@ AM_CPPFLAGS = -idirafter $(srcroot)/include
 # to install (e.g. our crt0.o objects).
 noinst_LIBRARIES = libobjs.a
 libobjs_a_SOURCES = $(am__append_14) $(am__append_19) $(am__append_25) \
-	$(am__append_31)
+	$(am__append_31) $(am__append_33)
 FLAGS_TO_PASS = \
 	"CC=$(CC)" \
 	"CFLAGS=$(CFLAGS)" \
@@ -996,6 +1025,33 @@ TEXINFO_TEX = ../texinfo/texinfo.tex
 @CONFIG_LM32_TRUE@	lm32/isatty.c \
 @CONFIG_LM32_TRUE@	lm32/scall.S
 
+@CONFIG_LOONGARCH_TRUE@loongarch_libgloss_a_CPPFLAGS = \
+@CONFIG_LOONGARCH_TRUE@	$(AM_CPPFLAGS) \
+@CONFIG_LOONGARCH_TRUE@	-I$(srcdir)/loongarch
+
+@CONFIG_LOONGARCH_TRUE@loongarch_libgloss_a_SOURCES = \
+@CONFIG_LOONGARCH_TRUE@	loongarch/_exit.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/chown.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/close.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/conv_stat.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/fstat.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/getpid.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/gettod.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/isatty.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/kill.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/link.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/lseek.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/open.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/read.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/readlink.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/sbrk.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/stat.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/symlink.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/times.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/unlink.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/wait.c \
+@CONFIG_LOONGARCH_TRUE@	loongarch/write.c
+
 @CONFIG_NIOS2_TRUE@nios2_libnios2_a_SOURCES = \
 @CONFIG_NIOS2_TRUE@	nios2/crt0.S \
 @CONFIG_NIOS2_TRUE@	nios2/io-close.c \
@@ -1099,7 +1155,7 @@ all: config.h
 .SUFFIXES: .S .c .dvi .o .obj .ps
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/../multilib.am $(srcdir)/doc/Makefile.inc $(srcdir)/aarch64/Makefile.inc $(srcdir)/aarch64/cpu-init/Makefile.inc $(srcdir)/arc/Makefile.inc $(srcdir)/arm/Makefile.inc $(srcdir)/arm/cpu-init/Makefile.inc $(srcdir)/bfin/Makefile.inc $(srcdir)/csky/Makefile.inc $(srcdir)/d30v/Makefile.inc $(srcdir)/iq2000/Makefile.inc $(srcdir)/libnosys/Makefile.inc $(srcdir)/lm32/Makefile.inc $(srcdir)/nios2/Makefile.inc $(srcdir)/riscv/Makefile.inc $(srcdir)/wince/Makefile.inc $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/../multilib.am $(srcdir)/doc/Makefile.inc $(srcdir)/aarch64/Makefile.inc $(srcdir)/aarch64/cpu-init/Makefile.inc $(srcdir)/arc/Makefile.inc $(srcdir)/arm/Makefile.inc $(srcdir)/arm/cpu-init/Makefile.inc $(srcdir)/bfin/Makefile.inc $(srcdir)/csky/Makefile.inc $(srcdir)/d30v/Makefile.inc $(srcdir)/iq2000/Makefile.inc $(srcdir)/libnosys/Makefile.inc $(srcdir)/lm32/Makefile.inc $(srcdir)/loongarch/Makefile.inc $(srcdir)/nios2/Makefile.inc $(srcdir)/riscv/Makefile.inc $(srcdir)/wince/Makefile.inc $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -1121,7 +1177,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__depfiles_maybe);; \
 	esac;
-$(top_srcdir)/../multilib.am $(srcdir)/doc/Makefile.inc $(srcdir)/aarch64/Makefile.inc $(srcdir)/aarch64/cpu-init/Makefile.inc $(srcdir)/arc/Makefile.inc $(srcdir)/arm/Makefile.inc $(srcdir)/arm/cpu-init/Makefile.inc $(srcdir)/bfin/Makefile.inc $(srcdir)/csky/Makefile.inc $(srcdir)/d30v/Makefile.inc $(srcdir)/iq2000/Makefile.inc $(srcdir)/libnosys/Makefile.inc $(srcdir)/lm32/Makefile.inc $(srcdir)/nios2/Makefile.inc $(srcdir)/riscv/Makefile.inc $(srcdir)/wince/Makefile.inc $(am__empty):
+$(top_srcdir)/../multilib.am $(srcdir)/doc/Makefile.inc $(srcdir)/aarch64/Makefile.inc $(srcdir)/aarch64/cpu-init/Makefile.inc $(srcdir)/arc/Makefile.inc $(srcdir)/arm/Makefile.inc $(srcdir)/arm/cpu-init/Makefile.inc $(srcdir)/bfin/Makefile.inc $(srcdir)/csky/Makefile.inc $(srcdir)/d30v/Makefile.inc $(srcdir)/iq2000/Makefile.inc $(srcdir)/libnosys/Makefile.inc $(srcdir)/lm32/Makefile.inc $(srcdir)/loongarch/Makefile.inc $(srcdir)/nios2/Makefile.inc $(srcdir)/riscv/Makefile.inc $(srcdir)/wince/Makefile.inc $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -1580,6 +1636,14 @@ lm32/$(DEPDIR)/$(am__dirstamp):
 	@: > lm32/$(DEPDIR)/$(am__dirstamp)
 lm32/crt0.$(OBJEXT): lm32/$(am__dirstamp) \
 	lm32/$(DEPDIR)/$(am__dirstamp)
+loongarch/$(am__dirstamp):
+	@$(MKDIR_P) loongarch
+	@: > loongarch/$(am__dirstamp)
+loongarch/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) loongarch/$(DEPDIR)
+	@: > loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/crt0.$(OBJEXT): loongarch/$(am__dirstamp) \
+	loongarch/$(DEPDIR)/$(am__dirstamp)
 
 libobjs.a: $(libobjs_a_OBJECTS) $(libobjs_a_DEPENDENCIES) $(EXTRA_libobjs_a_DEPENDENCIES) 
 	$(AM_V_at)-rm -f libobjs.a
@@ -1594,6 +1658,53 @@ lm32/libgloss.a: $(lm32_libgloss_a_OBJECTS) $(lm32_libgloss_a_DEPENDENCIES) $(EX
 	$(AM_V_at)-rm -f lm32/libgloss.a
 	$(AM_V_AR)$(lm32_libgloss_a_AR) lm32/libgloss.a $(lm32_libgloss_a_OBJECTS) $(lm32_libgloss_a_LIBADD)
 	$(AM_V_at)$(RANLIB) lm32/libgloss.a
+loongarch/loongarch_libgloss_a-_exit.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-chown.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-close.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-conv_stat.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-fstat.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-getpid.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-gettod.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-isatty.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-kill.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-link.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-lseek.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-open.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-read.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-readlink.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-sbrk.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-stat.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-symlink.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-times.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-unlink.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-wait.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+loongarch/loongarch_libgloss_a-write.$(OBJEXT):  \
+	loongarch/$(am__dirstamp) loongarch/$(DEPDIR)/$(am__dirstamp)
+
+loongarch/libgloss.a: $(loongarch_libgloss_a_OBJECTS) $(loongarch_libgloss_a_DEPENDENCIES) $(EXTRA_loongarch_libgloss_a_DEPENDENCIES) loongarch/$(am__dirstamp)
+	$(AM_V_at)-rm -f loongarch/libgloss.a
+	$(AM_V_AR)$(loongarch_libgloss_a_AR) loongarch/libgloss.a $(loongarch_libgloss_a_OBJECTS) $(loongarch_libgloss_a_LIBADD)
+	$(AM_V_at)$(RANLIB) loongarch/libgloss.a
 nios2/$(am__dirstamp):
 	@$(MKDIR_P) nios2
 	@: > nios2/$(am__dirstamp)
@@ -1853,6 +1964,7 @@ mostlyclean-compile:
 	-rm -f iq2000/*.$(OBJEXT)
 	-rm -f libnosys/*.$(OBJEXT)
 	-rm -f lm32/*.$(OBJEXT)
+	-rm -f loongarch/*.$(OBJEXT)
 	-rm -f nios2/*.$(OBJEXT)
 	-rm -f riscv/*.$(OBJEXT)
 
@@ -1976,6 +2088,28 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@lm32/$(DEPDIR)/crt0.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@lm32/$(DEPDIR)/isatty.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@lm32/$(DEPDIR)/scall.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/crt0.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@nios2/$(DEPDIR)/nios2_libnios2_a-crt0.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@nios2/$(DEPDIR)/nios2_libnios2_a-getpid.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@nios2/$(DEPDIR)/nios2_libnios2_a-io-close.Po@am__quote@
@@ -2716,6 +2850,300 @@ csky/csky_libsemi_a-getpid.obj: csky/getpid.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='csky/getpid.c' object='csky/csky_libsemi_a-getpid.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(csky_libsemi_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o csky/csky_libsemi_a-getpid.obj `if test -f 'csky/getpid.c'; then $(CYGPATH_W) 'csky/getpid.c'; else $(CYGPATH_W) '$(srcdir)/csky/getpid.c'; fi`
+
+loongarch/loongarch_libgloss_a-_exit.o: loongarch/_exit.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-_exit.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Tpo -c -o loongarch/loongarch_libgloss_a-_exit.o `test -f 'loongarch/_exit.c' || echo '$(srcdir)/'`loongarch/_exit.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/_exit.c' object='loongarch/loongarch_libgloss_a-_exit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-_exit.o `test -f 'loongarch/_exit.c' || echo '$(srcdir)/'`loongarch/_exit.c
+
+loongarch/loongarch_libgloss_a-_exit.obj: loongarch/_exit.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-_exit.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Tpo -c -o loongarch/loongarch_libgloss_a-_exit.obj `if test -f 'loongarch/_exit.c'; then $(CYGPATH_W) 'loongarch/_exit.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/_exit.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-_exit.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/_exit.c' object='loongarch/loongarch_libgloss_a-_exit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-_exit.obj `if test -f 'loongarch/_exit.c'; then $(CYGPATH_W) 'loongarch/_exit.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/_exit.c'; fi`
+
+loongarch/loongarch_libgloss_a-chown.o: loongarch/chown.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-chown.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Tpo -c -o loongarch/loongarch_libgloss_a-chown.o `test -f 'loongarch/chown.c' || echo '$(srcdir)/'`loongarch/chown.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/chown.c' object='loongarch/loongarch_libgloss_a-chown.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-chown.o `test -f 'loongarch/chown.c' || echo '$(srcdir)/'`loongarch/chown.c
+
+loongarch/loongarch_libgloss_a-chown.obj: loongarch/chown.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-chown.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Tpo -c -o loongarch/loongarch_libgloss_a-chown.obj `if test -f 'loongarch/chown.c'; then $(CYGPATH_W) 'loongarch/chown.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/chown.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-chown.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/chown.c' object='loongarch/loongarch_libgloss_a-chown.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-chown.obj `if test -f 'loongarch/chown.c'; then $(CYGPATH_W) 'loongarch/chown.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/chown.c'; fi`
+
+loongarch/loongarch_libgloss_a-close.o: loongarch/close.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-close.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Tpo -c -o loongarch/loongarch_libgloss_a-close.o `test -f 'loongarch/close.c' || echo '$(srcdir)/'`loongarch/close.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/close.c' object='loongarch/loongarch_libgloss_a-close.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-close.o `test -f 'loongarch/close.c' || echo '$(srcdir)/'`loongarch/close.c
+
+loongarch/loongarch_libgloss_a-close.obj: loongarch/close.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-close.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Tpo -c -o loongarch/loongarch_libgloss_a-close.obj `if test -f 'loongarch/close.c'; then $(CYGPATH_W) 'loongarch/close.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/close.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-close.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/close.c' object='loongarch/loongarch_libgloss_a-close.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-close.obj `if test -f 'loongarch/close.c'; then $(CYGPATH_W) 'loongarch/close.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/close.c'; fi`
+
+loongarch/loongarch_libgloss_a-conv_stat.o: loongarch/conv_stat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-conv_stat.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Tpo -c -o loongarch/loongarch_libgloss_a-conv_stat.o `test -f 'loongarch/conv_stat.c' || echo '$(srcdir)/'`loongarch/conv_stat.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/conv_stat.c' object='loongarch/loongarch_libgloss_a-conv_stat.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-conv_stat.o `test -f 'loongarch/conv_stat.c' || echo '$(srcdir)/'`loongarch/conv_stat.c
+
+loongarch/loongarch_libgloss_a-conv_stat.obj: loongarch/conv_stat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-conv_stat.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Tpo -c -o loongarch/loongarch_libgloss_a-conv_stat.obj `if test -f 'loongarch/conv_stat.c'; then $(CYGPATH_W) 'loongarch/conv_stat.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/conv_stat.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-conv_stat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/conv_stat.c' object='loongarch/loongarch_libgloss_a-conv_stat.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-conv_stat.obj `if test -f 'loongarch/conv_stat.c'; then $(CYGPATH_W) 'loongarch/conv_stat.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/conv_stat.c'; fi`
+
+loongarch/loongarch_libgloss_a-fstat.o: loongarch/fstat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-fstat.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Tpo -c -o loongarch/loongarch_libgloss_a-fstat.o `test -f 'loongarch/fstat.c' || echo '$(srcdir)/'`loongarch/fstat.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/fstat.c' object='loongarch/loongarch_libgloss_a-fstat.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-fstat.o `test -f 'loongarch/fstat.c' || echo '$(srcdir)/'`loongarch/fstat.c
+
+loongarch/loongarch_libgloss_a-fstat.obj: loongarch/fstat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-fstat.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Tpo -c -o loongarch/loongarch_libgloss_a-fstat.obj `if test -f 'loongarch/fstat.c'; then $(CYGPATH_W) 'loongarch/fstat.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/fstat.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-fstat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/fstat.c' object='loongarch/loongarch_libgloss_a-fstat.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-fstat.obj `if test -f 'loongarch/fstat.c'; then $(CYGPATH_W) 'loongarch/fstat.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/fstat.c'; fi`
+
+loongarch/loongarch_libgloss_a-getpid.o: loongarch/getpid.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-getpid.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Tpo -c -o loongarch/loongarch_libgloss_a-getpid.o `test -f 'loongarch/getpid.c' || echo '$(srcdir)/'`loongarch/getpid.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/getpid.c' object='loongarch/loongarch_libgloss_a-getpid.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-getpid.o `test -f 'loongarch/getpid.c' || echo '$(srcdir)/'`loongarch/getpid.c
+
+loongarch/loongarch_libgloss_a-getpid.obj: loongarch/getpid.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-getpid.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Tpo -c -o loongarch/loongarch_libgloss_a-getpid.obj `if test -f 'loongarch/getpid.c'; then $(CYGPATH_W) 'loongarch/getpid.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/getpid.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-getpid.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/getpid.c' object='loongarch/loongarch_libgloss_a-getpid.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-getpid.obj `if test -f 'loongarch/getpid.c'; then $(CYGPATH_W) 'loongarch/getpid.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/getpid.c'; fi`
+
+loongarch/loongarch_libgloss_a-gettod.o: loongarch/gettod.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-gettod.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Tpo -c -o loongarch/loongarch_libgloss_a-gettod.o `test -f 'loongarch/gettod.c' || echo '$(srcdir)/'`loongarch/gettod.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/gettod.c' object='loongarch/loongarch_libgloss_a-gettod.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-gettod.o `test -f 'loongarch/gettod.c' || echo '$(srcdir)/'`loongarch/gettod.c
+
+loongarch/loongarch_libgloss_a-gettod.obj: loongarch/gettod.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-gettod.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Tpo -c -o loongarch/loongarch_libgloss_a-gettod.obj `if test -f 'loongarch/gettod.c'; then $(CYGPATH_W) 'loongarch/gettod.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/gettod.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-gettod.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/gettod.c' object='loongarch/loongarch_libgloss_a-gettod.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-gettod.obj `if test -f 'loongarch/gettod.c'; then $(CYGPATH_W) 'loongarch/gettod.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/gettod.c'; fi`
+
+loongarch/loongarch_libgloss_a-isatty.o: loongarch/isatty.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-isatty.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Tpo -c -o loongarch/loongarch_libgloss_a-isatty.o `test -f 'loongarch/isatty.c' || echo '$(srcdir)/'`loongarch/isatty.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/isatty.c' object='loongarch/loongarch_libgloss_a-isatty.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-isatty.o `test -f 'loongarch/isatty.c' || echo '$(srcdir)/'`loongarch/isatty.c
+
+loongarch/loongarch_libgloss_a-isatty.obj: loongarch/isatty.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-isatty.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Tpo -c -o loongarch/loongarch_libgloss_a-isatty.obj `if test -f 'loongarch/isatty.c'; then $(CYGPATH_W) 'loongarch/isatty.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/isatty.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-isatty.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/isatty.c' object='loongarch/loongarch_libgloss_a-isatty.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-isatty.obj `if test -f 'loongarch/isatty.c'; then $(CYGPATH_W) 'loongarch/isatty.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/isatty.c'; fi`
+
+loongarch/loongarch_libgloss_a-kill.o: loongarch/kill.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-kill.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Tpo -c -o loongarch/loongarch_libgloss_a-kill.o `test -f 'loongarch/kill.c' || echo '$(srcdir)/'`loongarch/kill.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/kill.c' object='loongarch/loongarch_libgloss_a-kill.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-kill.o `test -f 'loongarch/kill.c' || echo '$(srcdir)/'`loongarch/kill.c
+
+loongarch/loongarch_libgloss_a-kill.obj: loongarch/kill.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-kill.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Tpo -c -o loongarch/loongarch_libgloss_a-kill.obj `if test -f 'loongarch/kill.c'; then $(CYGPATH_W) 'loongarch/kill.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/kill.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-kill.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/kill.c' object='loongarch/loongarch_libgloss_a-kill.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-kill.obj `if test -f 'loongarch/kill.c'; then $(CYGPATH_W) 'loongarch/kill.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/kill.c'; fi`
+
+loongarch/loongarch_libgloss_a-link.o: loongarch/link.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-link.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Tpo -c -o loongarch/loongarch_libgloss_a-link.o `test -f 'loongarch/link.c' || echo '$(srcdir)/'`loongarch/link.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/link.c' object='loongarch/loongarch_libgloss_a-link.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-link.o `test -f 'loongarch/link.c' || echo '$(srcdir)/'`loongarch/link.c
+
+loongarch/loongarch_libgloss_a-link.obj: loongarch/link.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-link.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Tpo -c -o loongarch/loongarch_libgloss_a-link.obj `if test -f 'loongarch/link.c'; then $(CYGPATH_W) 'loongarch/link.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/link.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-link.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/link.c' object='loongarch/loongarch_libgloss_a-link.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-link.obj `if test -f 'loongarch/link.c'; then $(CYGPATH_W) 'loongarch/link.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/link.c'; fi`
+
+loongarch/loongarch_libgloss_a-lseek.o: loongarch/lseek.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-lseek.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Tpo -c -o loongarch/loongarch_libgloss_a-lseek.o `test -f 'loongarch/lseek.c' || echo '$(srcdir)/'`loongarch/lseek.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/lseek.c' object='loongarch/loongarch_libgloss_a-lseek.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-lseek.o `test -f 'loongarch/lseek.c' || echo '$(srcdir)/'`loongarch/lseek.c
+
+loongarch/loongarch_libgloss_a-lseek.obj: loongarch/lseek.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-lseek.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Tpo -c -o loongarch/loongarch_libgloss_a-lseek.obj `if test -f 'loongarch/lseek.c'; then $(CYGPATH_W) 'loongarch/lseek.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/lseek.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-lseek.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/lseek.c' object='loongarch/loongarch_libgloss_a-lseek.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-lseek.obj `if test -f 'loongarch/lseek.c'; then $(CYGPATH_W) 'loongarch/lseek.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/lseek.c'; fi`
+
+loongarch/loongarch_libgloss_a-open.o: loongarch/open.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-open.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Tpo -c -o loongarch/loongarch_libgloss_a-open.o `test -f 'loongarch/open.c' || echo '$(srcdir)/'`loongarch/open.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/open.c' object='loongarch/loongarch_libgloss_a-open.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-open.o `test -f 'loongarch/open.c' || echo '$(srcdir)/'`loongarch/open.c
+
+loongarch/loongarch_libgloss_a-open.obj: loongarch/open.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-open.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Tpo -c -o loongarch/loongarch_libgloss_a-open.obj `if test -f 'loongarch/open.c'; then $(CYGPATH_W) 'loongarch/open.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/open.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-open.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/open.c' object='loongarch/loongarch_libgloss_a-open.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-open.obj `if test -f 'loongarch/open.c'; then $(CYGPATH_W) 'loongarch/open.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/open.c'; fi`
+
+loongarch/loongarch_libgloss_a-read.o: loongarch/read.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-read.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Tpo -c -o loongarch/loongarch_libgloss_a-read.o `test -f 'loongarch/read.c' || echo '$(srcdir)/'`loongarch/read.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/read.c' object='loongarch/loongarch_libgloss_a-read.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-read.o `test -f 'loongarch/read.c' || echo '$(srcdir)/'`loongarch/read.c
+
+loongarch/loongarch_libgloss_a-read.obj: loongarch/read.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-read.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Tpo -c -o loongarch/loongarch_libgloss_a-read.obj `if test -f 'loongarch/read.c'; then $(CYGPATH_W) 'loongarch/read.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/read.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-read.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/read.c' object='loongarch/loongarch_libgloss_a-read.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-read.obj `if test -f 'loongarch/read.c'; then $(CYGPATH_W) 'loongarch/read.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/read.c'; fi`
+
+loongarch/loongarch_libgloss_a-readlink.o: loongarch/readlink.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-readlink.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Tpo -c -o loongarch/loongarch_libgloss_a-readlink.o `test -f 'loongarch/readlink.c' || echo '$(srcdir)/'`loongarch/readlink.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/readlink.c' object='loongarch/loongarch_libgloss_a-readlink.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-readlink.o `test -f 'loongarch/readlink.c' || echo '$(srcdir)/'`loongarch/readlink.c
+
+loongarch/loongarch_libgloss_a-readlink.obj: loongarch/readlink.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-readlink.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Tpo -c -o loongarch/loongarch_libgloss_a-readlink.obj `if test -f 'loongarch/readlink.c'; then $(CYGPATH_W) 'loongarch/readlink.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/readlink.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-readlink.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/readlink.c' object='loongarch/loongarch_libgloss_a-readlink.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-readlink.obj `if test -f 'loongarch/readlink.c'; then $(CYGPATH_W) 'loongarch/readlink.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/readlink.c'; fi`
+
+loongarch/loongarch_libgloss_a-sbrk.o: loongarch/sbrk.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-sbrk.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Tpo -c -o loongarch/loongarch_libgloss_a-sbrk.o `test -f 'loongarch/sbrk.c' || echo '$(srcdir)/'`loongarch/sbrk.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/sbrk.c' object='loongarch/loongarch_libgloss_a-sbrk.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-sbrk.o `test -f 'loongarch/sbrk.c' || echo '$(srcdir)/'`loongarch/sbrk.c
+
+loongarch/loongarch_libgloss_a-sbrk.obj: loongarch/sbrk.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-sbrk.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Tpo -c -o loongarch/loongarch_libgloss_a-sbrk.obj `if test -f 'loongarch/sbrk.c'; then $(CYGPATH_W) 'loongarch/sbrk.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/sbrk.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-sbrk.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/sbrk.c' object='loongarch/loongarch_libgloss_a-sbrk.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-sbrk.obj `if test -f 'loongarch/sbrk.c'; then $(CYGPATH_W) 'loongarch/sbrk.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/sbrk.c'; fi`
+
+loongarch/loongarch_libgloss_a-stat.o: loongarch/stat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-stat.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Tpo -c -o loongarch/loongarch_libgloss_a-stat.o `test -f 'loongarch/stat.c' || echo '$(srcdir)/'`loongarch/stat.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/stat.c' object='loongarch/loongarch_libgloss_a-stat.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-stat.o `test -f 'loongarch/stat.c' || echo '$(srcdir)/'`loongarch/stat.c
+
+loongarch/loongarch_libgloss_a-stat.obj: loongarch/stat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-stat.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Tpo -c -o loongarch/loongarch_libgloss_a-stat.obj `if test -f 'loongarch/stat.c'; then $(CYGPATH_W) 'loongarch/stat.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/stat.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-stat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/stat.c' object='loongarch/loongarch_libgloss_a-stat.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-stat.obj `if test -f 'loongarch/stat.c'; then $(CYGPATH_W) 'loongarch/stat.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/stat.c'; fi`
+
+loongarch/loongarch_libgloss_a-symlink.o: loongarch/symlink.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-symlink.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Tpo -c -o loongarch/loongarch_libgloss_a-symlink.o `test -f 'loongarch/symlink.c' || echo '$(srcdir)/'`loongarch/symlink.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/symlink.c' object='loongarch/loongarch_libgloss_a-symlink.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-symlink.o `test -f 'loongarch/symlink.c' || echo '$(srcdir)/'`loongarch/symlink.c
+
+loongarch/loongarch_libgloss_a-symlink.obj: loongarch/symlink.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-symlink.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Tpo -c -o loongarch/loongarch_libgloss_a-symlink.obj `if test -f 'loongarch/symlink.c'; then $(CYGPATH_W) 'loongarch/symlink.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/symlink.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-symlink.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/symlink.c' object='loongarch/loongarch_libgloss_a-symlink.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-symlink.obj `if test -f 'loongarch/symlink.c'; then $(CYGPATH_W) 'loongarch/symlink.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/symlink.c'; fi`
+
+loongarch/loongarch_libgloss_a-times.o: loongarch/times.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-times.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Tpo -c -o loongarch/loongarch_libgloss_a-times.o `test -f 'loongarch/times.c' || echo '$(srcdir)/'`loongarch/times.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/times.c' object='loongarch/loongarch_libgloss_a-times.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-times.o `test -f 'loongarch/times.c' || echo '$(srcdir)/'`loongarch/times.c
+
+loongarch/loongarch_libgloss_a-times.obj: loongarch/times.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-times.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Tpo -c -o loongarch/loongarch_libgloss_a-times.obj `if test -f 'loongarch/times.c'; then $(CYGPATH_W) 'loongarch/times.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/times.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-times.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/times.c' object='loongarch/loongarch_libgloss_a-times.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-times.obj `if test -f 'loongarch/times.c'; then $(CYGPATH_W) 'loongarch/times.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/times.c'; fi`
+
+loongarch/loongarch_libgloss_a-unlink.o: loongarch/unlink.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-unlink.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Tpo -c -o loongarch/loongarch_libgloss_a-unlink.o `test -f 'loongarch/unlink.c' || echo '$(srcdir)/'`loongarch/unlink.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/unlink.c' object='loongarch/loongarch_libgloss_a-unlink.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-unlink.o `test -f 'loongarch/unlink.c' || echo '$(srcdir)/'`loongarch/unlink.c
+
+loongarch/loongarch_libgloss_a-unlink.obj: loongarch/unlink.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-unlink.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Tpo -c -o loongarch/loongarch_libgloss_a-unlink.obj `if test -f 'loongarch/unlink.c'; then $(CYGPATH_W) 'loongarch/unlink.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/unlink.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-unlink.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/unlink.c' object='loongarch/loongarch_libgloss_a-unlink.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-unlink.obj `if test -f 'loongarch/unlink.c'; then $(CYGPATH_W) 'loongarch/unlink.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/unlink.c'; fi`
+
+loongarch/loongarch_libgloss_a-wait.o: loongarch/wait.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-wait.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Tpo -c -o loongarch/loongarch_libgloss_a-wait.o `test -f 'loongarch/wait.c' || echo '$(srcdir)/'`loongarch/wait.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/wait.c' object='loongarch/loongarch_libgloss_a-wait.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-wait.o `test -f 'loongarch/wait.c' || echo '$(srcdir)/'`loongarch/wait.c
+
+loongarch/loongarch_libgloss_a-wait.obj: loongarch/wait.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-wait.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Tpo -c -o loongarch/loongarch_libgloss_a-wait.obj `if test -f 'loongarch/wait.c'; then $(CYGPATH_W) 'loongarch/wait.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/wait.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-wait.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/wait.c' object='loongarch/loongarch_libgloss_a-wait.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-wait.obj `if test -f 'loongarch/wait.c'; then $(CYGPATH_W) 'loongarch/wait.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/wait.c'; fi`
+
+loongarch/loongarch_libgloss_a-write.o: loongarch/write.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-write.o -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Tpo -c -o loongarch/loongarch_libgloss_a-write.o `test -f 'loongarch/write.c' || echo '$(srcdir)/'`loongarch/write.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/write.c' object='loongarch/loongarch_libgloss_a-write.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-write.o `test -f 'loongarch/write.c' || echo '$(srcdir)/'`loongarch/write.c
+
+loongarch/loongarch_libgloss_a-write.obj: loongarch/write.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT loongarch/loongarch_libgloss_a-write.obj -MD -MP -MF loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Tpo -c -o loongarch/loongarch_libgloss_a-write.obj `if test -f 'loongarch/write.c'; then $(CYGPATH_W) 'loongarch/write.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/write.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Tpo loongarch/$(DEPDIR)/loongarch_libgloss_a-write.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='loongarch/write.c' object='loongarch/loongarch_libgloss_a-write.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(loongarch_libgloss_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o loongarch/loongarch_libgloss_a-write.obj `if test -f 'loongarch/write.c'; then $(CYGPATH_W) 'loongarch/write.c'; else $(CYGPATH_W) '$(srcdir)/loongarch/write.c'; fi`
 
 nios2/nios2_libnios2_a-io-close.o: nios2/io-close.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(nios2_libnios2_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT nios2/nios2_libnios2_a-io-close.o -MD -MP -MF nios2/$(DEPDIR)/nios2_libnios2_a-io-close.Tpo -c -o nios2/nios2_libnios2_a-io-close.o `test -f 'nios2/io-close.c' || echo '$(srcdir)/'`nios2/io-close.c
@@ -4222,6 +4650,8 @@ distclean-generic:
 	-rm -f libnosys/$(am__dirstamp)
 	-rm -f lm32/$(DEPDIR)/$(am__dirstamp)
 	-rm -f lm32/$(am__dirstamp)
+	-rm -f loongarch/$(DEPDIR)/$(am__dirstamp)
+	-rm -f loongarch/$(am__dirstamp)
 	-rm -f nios2/$(DEPDIR)/$(am__dirstamp)
 	-rm -f nios2/$(am__dirstamp)
 	-rm -f riscv/$(DEPDIR)/$(am__dirstamp)
@@ -4239,7 +4669,7 @@ clean-am: clean-aminfo clean-binPROGRAMS clean-checkPROGRAMS \
 
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -rf ./$(DEPDIR) aarch64/$(DEPDIR) arc/$(DEPDIR) arm/$(DEPDIR) bfin/$(DEPDIR) csky/$(DEPDIR) d30v/$(DEPDIR) iq2000/$(DEPDIR) libnosys/$(DEPDIR) lm32/$(DEPDIR) nios2/$(DEPDIR) riscv/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) aarch64/$(DEPDIR) arc/$(DEPDIR) arm/$(DEPDIR) bfin/$(DEPDIR) csky/$(DEPDIR) d30v/$(DEPDIR) iq2000/$(DEPDIR) libnosys/$(DEPDIR) lm32/$(DEPDIR) loongarch/$(DEPDIR) nios2/$(DEPDIR) riscv/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-local distclean-tags
@@ -4382,7 +4812,7 @@ installcheck-am:
 maintainer-clean: maintainer-clean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
-	-rm -rf ./$(DEPDIR) aarch64/$(DEPDIR) arc/$(DEPDIR) arm/$(DEPDIR) bfin/$(DEPDIR) csky/$(DEPDIR) d30v/$(DEPDIR) iq2000/$(DEPDIR) libnosys/$(DEPDIR) lm32/$(DEPDIR) nios2/$(DEPDIR) riscv/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) aarch64/$(DEPDIR) arc/$(DEPDIR) arm/$(DEPDIR) bfin/$(DEPDIR) csky/$(DEPDIR) d30v/$(DEPDIR) iq2000/$(DEPDIR) libnosys/$(DEPDIR) lm32/$(DEPDIR) loongarch/$(DEPDIR) nios2/$(DEPDIR) riscv/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-aminfo \
 	maintainer-clean-generic maintainer-clean-local

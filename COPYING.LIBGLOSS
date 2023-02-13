@@ -483,3 +483,8 @@ http://www.opensource.org/licenses.
 Copyright (C) 2020 Embecosm Limited
 SPDX-License-Identifier: BSD-2-Clause
 
+(25) - LoongArch (loongarch-* targets)
+
+Copyright (C) 2023 Loongson Technology Corporation Limited
+SPDX-License-Identifier: GPL-2.0-only
+

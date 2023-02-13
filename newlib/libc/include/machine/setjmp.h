@@ -400,6 +400,11 @@ _BEGIN_STD_C
 #endif
 #endif
 
+#ifdef __loongarch__
+#define _JBTYPE unsigned long
+#define _JBLEN 13
+#endif
+
 #ifdef _JBLEN
 #ifdef _JBTYPE
 typedef	_JBTYPE jmp_buf[_JBLEN];
