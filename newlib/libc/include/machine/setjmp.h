@@ -439,6 +439,11 @@ _BEGIN_STD_C
 #endif
 #endif
 
+#ifdef __loongarch__
+#define _JBTYPE long long
+#define _JBLEN 21
+#endif
+
 #ifdef _JBLEN
 #ifdef _JBTYPE
 typedef	_JBTYPE jmp_buf[_JBLEN];

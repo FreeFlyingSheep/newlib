@@ -178,3 +178,6 @@ endif
 if HAVE_LIBC_MACHINE_Z8K
 include %D%/z8k/Makefile.inc
 endif
+if HAVE_LIBC_MACHINE_LOONGARCH
+include %D%/loongarch/Makefile.inc
+endif
